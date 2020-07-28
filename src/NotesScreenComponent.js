@@ -13,7 +13,12 @@ const NotesScreenComponent = () => {
         {"date": "24-02-2004", "text": "I have to bring vegatbles"},
         {"date": "24-02-2005", "text": "I have to bring vegatbles"},
         {"date": "24-02-2006", "text": "I have to bring vegatbles"},
-        {"date": "24-02-2007", "text": "I have to bring vegatbles"}
+        {"date": "24-02-2007", "text": "I have to bring vegatbles"},
+        {"date": "24-02-2008", "text": "I have to bring vegatbles"},
+        {"date": "24-02-2009", "text": "I have to bring vegatbles"},
+        {"date": "24-02-2010", "text": "I have to bring vegatbles"},
+        {"date": "24-02-2011", "text": "I have to bring vegatbles"}
+
     ]
 
     // to write javascript inside jsx, i need to enclose javascript code in {}
