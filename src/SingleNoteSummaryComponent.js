@@ -15,7 +15,7 @@ const randomBackground = () => {
     var blue = Math.floor(Math.random() * 255) // 43
 
     // String Interpolation
-    // In a string -> isnert a value of some other data type
+    // In a string -> insert a value of some other data type
     // ""  ''  ``
 
     return `rgb(${red}, ${green}, ${blue})` // rgb(123, 45, 43)
