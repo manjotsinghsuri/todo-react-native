@@ -13,7 +13,11 @@ const CreateNoteComponent = (props) => {
         autoCapitalize="none"
         multiline={true}
         value={newNoteText}
-        onChangeText={(currentText) => setNewNoteText(currentText)}
+        onChangeText={(currentText) => {
+                setNewNoteText(currentText)
+        
+        }
+        }
         />
         <Button 
             title={"Create Note"}
@@ -31,7 +35,12 @@ const styles = StyleSheet.create({
         borderWidth: 5,
         width: 320,
         height: 140,
-        borderRadius: 10
+        borderRadius: 10,
+        padding: 15,
+        fontSize: 20,
+        marginTop:10,
+        marginBottom:10,
+        marginLeft:5
     }
 });
 
