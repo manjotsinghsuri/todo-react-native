@@ -50,8 +50,7 @@ const NotesScreenComponent = () => {
 
     const addNewNote = (text) => {
         if(text.length > 0){
-            setData([{"text": text, "date": new Date()}, ...data])
-        }
+            setData([...data, {"text": text, "date": new Date()}])        }
         
 
         // A= ['a', 'b', 'c', 'd'] -> ...A -> 'a', 'b', 'c', 'd'

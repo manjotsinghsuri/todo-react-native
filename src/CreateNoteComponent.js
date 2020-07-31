@@ -50,7 +50,11 @@ const styles = StyleSheet.create({
         height: 140,
         borderRadius: 10,
         padding: 15,
-        fontSize: 30
+        fontSize: 30,
+        marginTop:10,
+        marginBottom:10,
+        //marginLeft:8,
+        alignSelf:"center"
     }
 });
 
