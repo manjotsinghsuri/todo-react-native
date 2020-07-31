@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import  {Text, FlatList, View, StyleSheet, TextInput, Button}  from 'react-native';
 import SingleNoteSummaryComponent from './SingleNoteSummaryComponent';
 import CreateNoteComponent from './CreateNoteComponent';
 import firebase from 'firebase'
+import _ from 'lodash'
 // a react component is nothing but a javascript function
 
 const NotesScreenComponent = () => {
@@ -22,9 +23,34 @@ const NotesScreenComponent = () => {
     // {name: 'abc', 'age': 12} -> {name} -> {name: 'abc'}
     // item , index
 
+    // /users/{id}/ 
+
+    const loggedInUserId = firebase.auth().currentUser.uid
+    
+    useEffect(() => {firebase.database()
+        .ref(`/users/${loggedInUserId}/`)
+        .on('value', (completeNewData) => {
+            console.log(completeNewData)
+
+            const newDataList = _.map(completeNewData.val(), (value, key) => {
+                console.log("Value", value)
+                console.log("Key", key)
+                return {...value}
+            })
+
+            console.log(newDataList)
+            setData(newDataList.reverse())
+        }
+    )}, [])
+
+
+
+
+
+
     const addNewNote = (text) => {
         if(text.length > 0){
-            setData([...data, {"text": text, "date": new Date()}])
+            setData([{"text": text, "date": new Date()}, ...data])
         }
         
 
@@ -73,8 +99,6 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
     textViewStyle: {
-        height: 150,
-        width: 150,
         margin: 10,
         borderRadius: 10,
         padding: 5,
@@ -122,3 +146,29 @@ export default NotesScreenComponent;
 
 
 // If we have to write JS in JSX, we need to surround JS code in {}
+
+
+
+
+
+// Object {
+//     "-MD_0ehQ55AEBBlQzmRJ": Object {
+//       "date": "Fri Jul 31 2020",
+//       "text": "yooooo",
+//     },
+//     "-MD_0sYGRokDygxRNusJ": Object {
+//       "date": "Fri Jul 31 2020",
+//       "text": "another note",
+//     },
+//   }
+
+// [
+    // {
+        //       "date": "Fri Jul 31 2020",
+        //       "text": "yooooo",
+        //     },
+        // {
+            //       "date": "Fri Jul 31 2020",
+            //       "text": "another note",
+            //     },
+// ]
